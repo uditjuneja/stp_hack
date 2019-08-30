@@ -4,6 +4,7 @@ from stp.models import User_Byld, Key
 def main():
     db.create_all()
     db.session.commit()
+    
 
 if __name__ == "__main__":
     main()
