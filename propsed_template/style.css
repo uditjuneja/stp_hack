@@ -11,3 +11,9 @@
     /* ---------------------------------------
     ##### - PLACE YOUR CUSTOM CSS HERE - #####
     --------------------------------------- */
+/* .shop_sidebar_area{
+    display: none;
+}
+active:hover + .shop_sidebar_area {
+    display: block;
+} */

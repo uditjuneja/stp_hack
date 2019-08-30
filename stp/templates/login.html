@@ -1,0 +1,46 @@
+{% extends "layout_login.html" %}
+{% block content %}
+
+					<span class="login100-form-title p-b-26">
+						Welcome to
+					</span>
+
+				<center> <img src="{{ url_for('static', filename='img/core-img/logo.png') }}" width="100" class="center"> </center>
+
+					<div class="wrap-input100">
+						<input class="input100" type="text" name="username">
+						<span class="focus-input100" data-placeholder="Username"></span>
+					</div>
+
+					<div class="wrap-input100" data-validate="Enter password">
+						<span class="btn-show-pass">
+							<i class="zmdi zmdi-eye"></i>
+						</span>
+						<input class="input100" type="password" name="pass">
+						<span class="focus-input100" data-placeholder="Password"></span>
+					</div>
+
+					<div>
+					  <input type="checkbox" name="remember" > remember Me<br>
+					</div>
+
+
+					<div class="container-login100-form-btn">
+						<div class="wrap-login100-form-btn">
+							<div class="login100-form-bgbtn"></div>
+							<button class="login100-form-btn" formmethod="post">
+								Login
+							</button>
+						</div>
+					</div>
+
+					<div class="text-center p-t-115">
+						<span class="txt1">
+							Don’t have an account?
+						</span>
+
+						<a class="txt2" href="{{ url_for('register') }}">
+							Sign Up
+						</a>
+					</div>
+{% endblock content %}

@@ -1,0 +1,70 @@
+{% extends "layout_login.html" %}
+{% block content %}
+
+					<span class="login100-form-title p-b-26">
+						Register at
+					</span>
+
+				<center> <img src="{{ url_for('static', filename='img/core-img/logo.png') }}" width="100" class="center"> </center>
+
+				<div class="wrap-input100 validate-input">
+					<input class="input100" type="text" name="key">
+					<span class="focus-input100" data-placeholder="Key"></span>
+				</div>
+
+				<div class="wrap-input100" data-validate = "Enter valid username">
+					<input class="input100" type="text" name="username">
+					<span class="focus-input100" data-placeholder="Username"></span>
+				</div>
+
+					<div class="wrap-input100 validate-input" data-validate = "Valid email is: a@b.c">
+						<input class="input100" type="text" name="email">
+						<span class="focus-input100" data-placeholder="Email"></span>
+					</div>
+
+					<div class="wrap-input100">
+						<input class="input100" type="text" name="phone_no">
+						<span class="focus-input100" data-placeholder="Phone Number"></span>
+					</div>
+
+					<div class="wrap-input100">
+						<input class="input100" type="text" name="company">
+						<span class="focus-input100" data-placeholder="Company"></span>
+					</div>
+
+
+					<div class="wrap-input100 validate-input" data-validate="Enter password">
+						<span class="btn-show-pass">
+							<i class="zmdi zmdi-eye"></i>
+						</span>
+						<input class="input100" type="password" name="pass">
+						<span class="focus-input100" data-placeholder="Password"></span>
+					</div>
+
+					<div class="wrap-input100 validate-input" data-validate="Enter password">
+						<span class="btn-show-pass">
+							<i class="zmdi zmdi-eye"></i>
+						</span>
+						<input class="input100" type="password" name="pass_re">
+						<span class="focus-input100" data-placeholder="Confirm Password"></span>
+					</div>
+
+					<div class="container-login100-form-btn">
+						<div class="wrap-login100-form-btn">
+							<div class="login100-form-bgbtn"></div>
+							<button class="login100-form-btn" formmethod="post">
+								Login
+							</button>
+						</div>
+					</div>
+
+					<div class="text-center p-t-115">
+						<span class="txt1">
+							Have an account?
+						</span>
+
+						<a class="txt2" href="{{ url_for('login') }}">
+							Sign In
+						</a>
+					</div>
+{% endblock content %}
