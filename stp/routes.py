@@ -39,9 +39,9 @@ def form_startup():
         return redirect(url_for('index'))
 
     if request.method == 'POST':
-        print ("In post", request.form['company'])
 
-        if users.query.filter_by(company=request.form['company']).first():
+
+        if startups.query.filter_by(company=request.form['company']).first():
             flash('The name is already taken.', 'danger')
             return redirect(url_for('startup'))
 
@@ -70,16 +70,21 @@ def form_investor():
         return redirect(url_for('index'))
 
     if request.method == 'POST':
+        if investors.query.filter_by(name=request.form['name']).first():
+            flash('The name is already taken.', 'danger')
+            return redirect(url_for('form_investor'))
 
-        investor = investors(name=request.form['name'],
-                    city=request.form['city'],
-                    investment=request.form['investment'],
-                    desc=request.form['desc'])
+        investor =investors(name=request.form['name'],
+                            city=request.form['city'],
+                            investment=request.form['investment'],
+                            desc=request.form['desc'])
 
         db.session.add(investor)
         db.session.commit()
         return redirect(url_for('index'))
+
     return render_template("forms/investor.html")
+
 
 @app.route("/form/incubator", methods=['GET', 'POST'])
 @login_required
@@ -92,7 +97,7 @@ def form_incubator():
         incubator = incubators(name=request.form['name'],
                     location=request.form['location'],
                     seats=request.form['seats'],
-                    startups_incubated=request.form['startups_incubated'],
+                    startup_incubated=request.form['startup_incubated'],
                     funding=request.form['funding'])
 
         db.session.add(incubator)

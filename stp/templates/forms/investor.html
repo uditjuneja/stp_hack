@@ -11,13 +11,13 @@
                                 <h2>Investor</h2>
                             </div>
 
-                            <form action="#" method="post">
+                            <form action="{{ url_for('form_investor') }}" method="post">
                                 <div class="row">
                                     <div class="col-md-12 mb-3">
-                                        <input type="text" class="form-control" id="Name" value="" placeholder="Name" name="name">
+                                        <input type="text" class="form-control" id="name" placeholder="Name" name="name">
                                     </div>
                                     <div class="col-md-12 mb-3">
-                                        <input type="text" class="form-control" id="City" value="" placeholder="city" name="city">
+                                        <input type="text" class="form-control" id="city" placeholder="city" name="city">
                                     </div>
                                     <div class="col-12 mb-3">
                                         <input type="text" class="form-control" id="investment" placeholder="Investment" name="investment">
@@ -26,11 +26,11 @@
                                         <input type="email" class="form-control" id="desc" placeholder="Technology of intrest" name="desc">
                                     </div>
                                   </div>
+                                  <input type="submit" class="btn amado-btn w-100"></input>
                             </form>
                         </div>
                     </div>
                   </div>
-                  <input type="submit" class="btn amado-btn w-100"></input>
 
                  </div>
 
