@@ -22,6 +22,10 @@ def about():
 def about_cm():
     return render_template("about/cm.html")
 
+@app.route("/response_map")
+def response_map():
+    return render_template("map.html")
+
 
 #####################################################################
 #  Explore
@@ -53,6 +57,7 @@ def explore_mentor():
 @app.route("/events")
 def events():
     return render_template("events/hackathons.html")
+
 
 #####################################################################
 #  Forms

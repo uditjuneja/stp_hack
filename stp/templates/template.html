@@ -70,9 +70,9 @@
             <nav class="amado-nav">
                 <ul>
                     <li {%if url_for(request.endpoint) == "/"%} class="active" {%else%} {%endif%} ><a href="{{url_for('index')}}">Home</a></li>
-                    <li {%if "/about" in url_for(request.endpoint) == "/about"%} class="active" {%else%} {%endif%}><a href="{{ url_for('about') }}">About</a></li>
-                    <li {%if url_for(request.endpoint) == "/explore"%} class="active" {%else%} {%endif%} ><a href="{{ url_for('explore') }}">Explore</a></li>
-                    <li {%if url_for(request.endpoint) == "/events"%} class="active" {%else%} {%endif%} ><a href="{{ url_for('events') }}">Events</a></li>
+                    <li {%if "/about" in url_for(request.endpoint) %} class="active" {%else%} {%endif%}><a href="{{ url_for('about') }}">About</a></li>
+                    <li {%if "/explore" in url_for(request.endpoint) %} class="active" {%else%} {%endif%} ><a href="{{ url_for('explore') }}">Explore</a></li>
+                    <li {%if "/events" in url_for(request.endpoint) %} class="active" {%else%} {%endif%} ><a href="{{ url_for('events') }}">Events</a></li>
                     <li {%if url_for(request.endpoint) == "/contact"%} class="active" {%else%} {%endif%} ><a href="{{ url_for('contact') }}">Contact</a></li>
                 </ul>
             </nav>
@@ -195,7 +195,7 @@
                     <div class="single_widget_area">
                         <!-- Logo -->
                         <div class="footer-logo mr-50">
-                            <a href="index.html"><img src="{{ url_for('static', filename='img/core-img/logo.png') }}" alt=""></a>
+                            <a href="index.html"><img src="{{ url_for('static', filename='img/core-img/logo.png') }}" alt="" height=200px width=200px></a>
                         </div>
                         <!-- Copywrite Text -->
                         <p class="copywrite"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
@@ -225,7 +225,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
                                             <a class="nav-link" href="cart.html">Helpline</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="checkout.html">Checkout</a>
+                                            <a class="nav-link" href="{{url_for('response_map')}}">Response Map</a>
                                         </li>
                                     </ul>
                                 </div>
