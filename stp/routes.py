@@ -47,8 +47,6 @@ def form_startup():
         return redirect(url_for('index'))
 
     if request.method == 'POST':
-        
-
         if users.query.filter_by(company=request.form['company']).first():
             flash('The name is already taken.', 'danger')
             return redirect(url_for('startup'))

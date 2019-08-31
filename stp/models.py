@@ -71,7 +71,7 @@ class startups(db.Model):
     __tablename__ = "startups"
 
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(50), unique=True, nullable=False)
+    company = db.Column(db.String(50), unique=True, nullable=False)
     email= db.Column(db.String(50), unique=True, nullable=False)
     website = db.Column(db.String(50), unique=True, nullable=False)
     contact = db.Column(db.Integer(), unique=True, nullable=False)
@@ -79,7 +79,7 @@ class startups(db.Model):
     age= db.Column(db.Integer(), nullable=False)
     country = db.Column(db.String(50), nullable=False)
     address = db.Column(db.String(20), nullable=False)
-    zipCode = db.Column(db.Integer(), nullable=False)
+    zipcode = db.Column(db.Integer(), nullable=False)
     description = db.Column(db.String(500))
 
     def __repr__(self):
