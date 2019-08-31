@@ -5,8 +5,8 @@
     <!-- ##### Single Widget ##### -->
     <div class="widget catagory mb-50">
 
-        <a href="#"><h6 class="widget-title mb-30" {% if url_for(request.endpoint) == "/about"%}style="color:blue;" {%endif%}>Starup Punjab</h6></a>
-        <a href="#"><h6 class="widget-title mb-30">CM's Message</h6></a>
+        <a href="{{ url_for('about') }}"><h6 class="widget-title mb-30" {% if url_for(request.endpoint) == "/about"%}style="color:blue;" {%endif%}>Starup Punjab</h6></a>
+        <a href="{{ url_for('about_cm') }}"><h6 class="widget-title mb-30" {% if url_for(request.endpoint) == "/about/cm"%}style="color:blue;" {%endif%}>CM's Message</h6></a>
 
         <h6 class="widget-title mb-30">Startup Portal</h6>
         <div class="catagories-menu">
