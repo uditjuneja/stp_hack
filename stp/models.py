@@ -28,13 +28,15 @@ class users(db.Model, UserMixin):
     user_posts = db.relationship('posts', backref='author', lazy=True)
 
     def __repr__(self):
-        return "{}-{}".format(username, email)
+        return "{}-{}".format(self.username, self.email)
 
 class posts(db.Model):
     __tablename__ = "posts"
 
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(100), nullable=False)
+    heading = db.Column(db.String(100), nullable=False)
+
     image_file = db.Column(db.String(20), nullable=False, default='default.jpg')
     date_posted = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     content = db.Column(db.Text, nullable=False)

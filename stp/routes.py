@@ -4,11 +4,16 @@ from flask_login import login_user, current_user, logout_user, login_required, \
                         logout_user
 
 from stp import app, db, bcrypt
+<<<<<<< HEAD
+from .models import users, posts
+=======
 from .models import users, startups
+>>>>>>> 85b6716a5107f1d771d0e12d02043cbcf538e353
 
 @app.route("/")
 def index():
-    return render_template("index.html")
+    posts_all = posts.query.all()
+    return render_template("index.html", posts=posts_all)
 
 @app.route("/about")
 def about():
@@ -27,7 +32,12 @@ def about():
 #     return render_template("about_stp.html")
 
 
+<<<<<<< HEAD
 @app.route("/form/startup", methods=['GET', 'POST'])
+=======
+@app.route("/form/startup")
+@login_required
+>>>>>>> 513148015ceea01e77631f30dc295ad88292a0df
 def form_startup():
     if current_user.is_authenticated:
         return redirect(url_for('dashboard'))
@@ -53,6 +63,12 @@ def form_startup():
 
     return render_template("forms/startup.html")
 
+@app.route("/form/form")
+@login_required
+def form_post():
+    if current_user.user_priority != 1:
+        return url_for('index')
+    return render_template("forms/post.html")
 
 @app.route("/contact")
 def contact():
