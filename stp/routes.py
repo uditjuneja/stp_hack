@@ -14,6 +14,11 @@ def index():
 def about():
     return render_template("about/about_stp.html")
 
+
+@app.route("/about/cm")
+def about_cm():
+    return render_template("about/cm.html")
+
 # @app.route("/about/cm_message")
 # def about_cm():
 #     return render_template("about_cm.html")
