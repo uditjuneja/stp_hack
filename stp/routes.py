@@ -2,7 +2,7 @@ import request
 from flask import Flask, request, redirect, url_for, render_template, flash
 from flask_login import login_user, current_user, logout_user, login_required, \
                         logout_user
-
+from werkzeug import secure_filename
 from stp import app, db, bcrypt
 from .models import users, posts, startups, investors, incubators
 
@@ -64,7 +64,9 @@ def form_startup():
         return redirect(url_for('index'))
 
     if request.method == 'POST':
-
+        f = request.files['file']
+        f.save(secure_filename(f.filename))
+        return 'file uploaded successfully'
 
         if startups.query.filter_by(company=request.form['company']).first():
             flash('The name is already taken.', 'danger')
@@ -145,7 +147,7 @@ def form_post():
 def contact():
     return render_template("contact.html")
 #####################################################################
-#  User 
+#  User
 #####################################################################
 @app.route("/login", methods=['GET', 'POST'])
 def login():
