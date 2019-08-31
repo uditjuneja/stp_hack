@@ -40,24 +40,21 @@ def form_startup():
 
     if request.method == 'POST':
         print ("In post", request.form['company'])
-        print ()
-        print ()
-        print ()
-        print ()
 
-        if users.query.filter_by(name=request.form['company']).first():
+        if users.query.filter_by(company=request.form['company']).first():
             flash('The name is already taken.', 'danger')
             return redirect(url_for('startup'))
 
-        startup = startups(name=request.form['username'],
+        startup = startups(company=request.form['company'],
                     email=request.form['email'],
                     website=request.form['website'],
                     contact=request.form['contact'],
                     age=request.form['age'],
                     country=request.form['country'],
-                    address=request.form['Address'],
-                    zipCode=request.form['zipcode'],
-                    description=request.form['description'])
+                    address=request.form['address'],
+                    zipcode=request.form['zipcode'],
+                    description="Very good startup")
+
         db.session.add(startup)
         db.session.commit()
         flash('Your startup has been registered', 'success')
