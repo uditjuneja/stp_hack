@@ -15,10 +15,18 @@ def index():
 def about():
     return render_template("about/about_stp.html")
 
-
 @app.route("/about/cm")
 def about_cm():
     return render_template("about/cm.html")
+
+@app.route("/explore")
+def explore():
+    return render_template("explore/startups.html")
+
+@app.route("/events")
+def events():
+    return render_template("events/hackathons.html")
+
 
 # @app.route("/about/cm_message")
 # def about_cm():
@@ -39,13 +47,9 @@ def form_startup():
         return redirect(url_for('index'))
 
     if request.method == 'POST':
-        print ("In post", request.form['company'])
-        print ()
-        print ()
-        print ()
-        print ()
+        
 
-        if users.query.filter_by(name=request.form['company']).first():
+        if users.query.filter_by(company=request.form['company']).first():
             flash('The name is already taken.', 'danger')
             return redirect(url_for('startup'))
 
