@@ -49,7 +49,6 @@ class posts(db.Model):
 
 
 
-<<<<<<< HEAD
 # class startups(db.Model):
 #     __tablename__ = "startups"
 #
@@ -68,7 +67,6 @@ class posts(db.Model):
 #     location = db.Column(db.String(20), nullable=False)
 #
 #
-=======
 class startups(db.Model):
     __tablename__ = "startups"
 
@@ -98,7 +96,6 @@ class investors(db.Model):
 
     def __repr__(self):
         return f"Post('{self.name}')"
->>>>>>> 0983959db048e9a9f5c195e198f619e43354cc4f
 #
 # class incubators(db.Model):
 #     __tablename__ = "incubators"

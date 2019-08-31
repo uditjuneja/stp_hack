@@ -32,15 +32,6 @@ def about_cm():
 # def about_stp():
 #     return render_template("about_stp.html")
 
-
-<<<<<<< HEAD
-@app.route("/form/startup")
-@login_required
-def form_startup():
-    return render_template("forms/startup.html")
-
-@app.route("/form/form", methods=['GET', 'POST'])
-=======
 @app.route("/form/startup", methods=['GET', 'POST'])
 @login_required
 def form_startup():
@@ -95,7 +86,6 @@ def form_investor():
 
 
 @app.route("/form/form")
->>>>>>> 0983959db048e9a9f5c195e198f619e43354cc4f
 @login_required
 def form_post():
     if current_user.user_priority != 1:
