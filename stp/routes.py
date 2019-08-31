@@ -15,10 +15,18 @@ def index():
 def about():
     return render_template("about/about_stp.html")
 
-
 @app.route("/about/cm")
 def about_cm():
     return render_template("about/cm.html")
+
+@app.route("/explore")
+def explore():
+    return render_template("explore/startups.html")
+
+@app.route("/events")
+def events():
+    return render_template("events/hackathons.html")
+
 
 # @app.route("/about/cm_message")
 # def about_cm():
@@ -45,16 +53,15 @@ def form_startup():
             flash('The name is already taken.', 'danger')
             return redirect(url_for('startup'))
 
-        startup = startups(company=request.form['company'],
+        startup = startups(name=request.form['username'],
                     email=request.form['email'],
                     website=request.form['website'],
                     contact=request.form['contact'],
                     age=request.form['age'],
                     country=request.form['country'],
-                    address=request.form['address'],
-                    zipcode=request.form['zipcode'],
-                    description="Very good startup")
-
+                    address=request.form['Address'],
+                    zipCode=request.form['zipcode'],
+                    description=request.form['description'])
         db.session.add(startup)
         db.session.commit()
         flash('Your startup has been registered', 'success')
