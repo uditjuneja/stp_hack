@@ -4,7 +4,7 @@ from flask_login import login_user, current_user, logout_user, login_required, \
                         logout_user
 
 from stp import app, db, bcrypt
-from .models import users
+from .models import users, startups
 
 @app.route("/")
 def index():
@@ -89,3 +89,69 @@ def register():
 def logout():
     logout_user()
     return redirect(url_for('index'))
+
+@app.route("/startup", methods=['GET', 'POST'])
+def startups():
+        if current_user.is_authenticated:
+            return redirect(url_for('dashboard'))
+
+        if request.method == 'POST':
+            # Tests
+
+ if users.query.filter_by(name=request.form['name']).first():
+    flash('The name is already taken.', 'danger')
+    return redirect(url_for('startup'))
+
+            if users.query.filter_by(email=request.form['email']).first():
+                flash('The email is already registered with an account.', 'danger')
+                return redirect(url_for('startup'))
+
+         if users.query.filter_by(website=request.form['website']).first():
+            flash('The website is already taken.', 'danger')
+            return redirect(url_for('startup'))
+
+
+             if users.query.filter_by( contact =request.form['contact']).first():
+                flash('The contact is already taken.', 'danger')
+                return redirect(url_for('startup'))
+
+
+                 if users.query.filter_by(age=request.form['age']).first():
+                    return redirect(url_for('startup'))
+
+
+                     if users.query.filter_by(country=request.form['country']).first():
+                        return redirect(url_for('startup'))
+
+
+                         if users.query.filter_by(address=request.form['address']).first():
+                            return redirect(url_for('startup'))
+
+
+                             if users.query.filter_by(zipCode=request.form['zipcode']).first()
+                                return redirect(url_for('startup'))
+
+
+
+
+
+                         if users.query.filter_by(description=request.form['description']).first():
+
+                                        return redirect(url_for('startup'))
+
+            startup = startups(name=request.form['username'],
+                        email=request.form['email'],
+                        website=request.form['website'],
+                        contact=request.form['contact'],
+                        age=request.form['age'],
+                        country=request.form['country'],
+                        address=request.form['Address'],
+                        zipCode=request.form['zipcode'],
+                        description=request.form['description'])
+            db.session.add(startup)
+            db.session.commit()
+            flash('Your startup has been registered', 'success')
+            return redirect(url_for('startup'))
+
+        else:
+            return render_template("startup.html")
