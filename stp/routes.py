@@ -34,17 +34,17 @@ def explore():
 @app.route("/explore/investor")
 def explore_investor():
     investors_all = investors.query.all()
-    return render_template("explore/investor.html", investors=investors_all)
+    return render_template("explore/investors.html", investors=investors_all)
 
-@app.route("/explore_incubator")
+@app.route("/explore/incubator")
 def explore_incubator():
     incubators_all = incubators.query.all()
-    return render_template("explore/incubator.html", incubators=incubators_all)
+    return render_template("explore/incubators.html", incubators=incubators_all)
 
-@app.route("/explore_mentor")
+@app.route("/explore/mentor")
 def explore_mentor():
     mentors_all = mentors.query.all()
-    return render_template("explore/mentor.html", mentors=mentors_all)
+    return render_template("explore/mentors.html", mentors=mentors_all)
 
 
 #####################################################################
@@ -54,7 +54,9 @@ def explore_mentor():
 def events():
     return render_template("events/hackathons.html")
 
-
+#####################################################################
+#  Forms
+#####################################################################
 @app.route("/form/startup", methods=['GET', 'POST'])
 @login_required
 def form_startup():
@@ -84,7 +86,6 @@ def form_startup():
 
     return render_template("forms/startup.html")
 
-
 @app.route("/form/investor", methods=['GET', 'POST'])
 @login_required
 def form_investor():
@@ -100,28 +101,22 @@ def form_investor():
                             city=request.form['city'],
                             investment=request.form['investment'],
                             desc=request.form['desc'])
-
         db.session.add(investor)
         db.session.commit()
         return redirect(url_for('index'))
-
     return render_template("forms/investor.html")
-
 
 @app.route("/form/incubator", methods=['GET', 'POST'])
 @login_required
 def form_incubator():
     if not current_user.is_authenticated:
         return redirect(url_for('index'))
-
     if request.method == 'POST':
-
         incubator = incubators(name=request.form['name'],
                     location=request.form['location'],
                     seats=request.form['seats'],
                     startup_incubated=request.form['startup_incubated'],
                     funding=request.form['funding'])
-
         db.session.add(incubator)
         db.session.commit()
         return redirect(url_for('index'))
@@ -132,41 +127,33 @@ def form_incubator():
 def form_post():
     if current_user.user_priority != 1:
         return url_for('index')
-
     if request.method == 'POST':
         title = request.form['title']
         heading = request.form['heading']
         content = request.form['content']
-
         if heading == "" or content == "":
             flash('Heading and Content are required!!', 'danger')
             return redirect(url_for('form_post'))
-
         post = posts(title = title,
                     heading=heading,
-                    content=content,
-
-
-        )
+                    content=content)
         flash('Heading and Content are required!!', 'danger')
         return redirect(url_for('index'))
-
-
     return render_template("forms/post.html")
 
 @app.route("/contact")
 def contact():
     return render_template("contact.html")
-
+#####################################################################
+#  User 
+#####################################################################
 @app.route("/login", methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
         return redirect(url_for('index'))
-
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['pass']
-
         user = users.query.filter_by(username=username).first()
         if user and bcrypt.check_password_hash(user.password, password):
             login_user(user, remember=True)
@@ -175,7 +162,6 @@ def login():
         else:
             flash('Login Unsuccessful. Please check email and password', 'danger')
         return render_template("login.html")
-
     else:
         return render_template("login.html")
 
@@ -183,7 +169,6 @@ def login():
 def register():
     if current_user.is_authenticated:
         return redirect(url_for('dashboard'))
-
     if request.method == 'POST':
         # Tests
         if users.query.filter_by(email=request.form['email']).first():
@@ -192,7 +177,6 @@ def register():
         if users.query.filter_by(username=request.form['username']).first():
             flash('The username is already taken.', 'danger')
             return redirect(url_for('register'))
-
         hashed_password = bcrypt.generate_password_hash(request.form['pass']).decode('utf-8')
         user = users(username=request.form['username'],
                     email=request.form['email'],
@@ -203,7 +187,6 @@ def register():
         db.session.commit()
         flash('Your account has been created! You are now able to log in', 'success')
         return redirect(url_for('login'))
-
     else:
         return render_template("register.html")
 

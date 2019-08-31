@@ -44,28 +44,6 @@ class posts(db.Model):
     def __repr__(self):
         return f"Post('{self.title}', '{self.date_posted}')"
 
-
-
-
-
-# class startups(db.Model):
-#     __tablename__ = "startups"
-#
-#     id = db.Column(db.Integer, primary_key=True)
-#     name = db.Column(db.String(50), unique=True, nullable=False)
-#     image_file = db.Column(db.String(20), nullable=False, default='default.jpg')
-#     location = db.Column(db.String(20), nullable=False)
-#     description = db.Column(db.String(500))
-#     services =
-#
-#
-# class investors(db.Model):
-#     __tablename__ = "investors"
-#     id = db.Column(db.Integer, primary_key=True)
-#     name = db.Column(db.String(50), unique=True, nullable=False)
-#     location = db.Column(db.String(20), nullable=False)
-#
-#
 class startups(db.Model):
     __tablename__ = "startups"
 
@@ -107,8 +85,3 @@ class incubators(db.Model):
 
      def __repr__(self):
          return f"Post('{self.name}')"
-# class user(db.Model):
-#     __tablename__ = "user"
-#     id = db.Column(db.Integer, primary_key=True)
-#     name = db.Column(db.String(50), unique=True, nullable=False
-#     location = db.Column(db.String(20), nullable=False))
