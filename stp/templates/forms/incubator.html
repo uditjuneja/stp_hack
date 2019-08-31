@@ -11,7 +11,7 @@
                                 <h2>Incubator </h2>
                             </div>
 
-                            <form action="#" method="post">
+                            <form action="{{ url_for('form_incubator') }}" method="post">
                                 <div class="row">
                                   <div class="col-md-12 mb-3">
                                       <input type="text" class="form-control" id="name"  placeholder="Name" name="name">
@@ -20,13 +20,13 @@
                                         <input type="text" class="form-control" id="location"  placeholder="Location" name="location">
                                     </div>
                                     <div class="col-md-12 mb-3">
-                                        <input type="text" class="form-control" id="seats"  placeholder="No of Seats" name="seats ">
+                                        <input type="text" class="form-control" id="seats"  placeholder="No of Seats" name="seats">
                                     </div>
                                     <div class="col-12 mb-3">
-                                        <input type="text" class="form-control" id="startup_incubated" placeholder="Startups Incubated" name="startup_incubated">
+                                        <input type="text" class="form-control" id="startup_incubated" placeholder="Startup Incubated" name="startup_incubated">
                                     </div>
                                     <div class="col-12 mb-3">
-                                        <input type="email" class="form-control" id="funding" placeholder="Fundings" name="funding">
+                                        <input type="text" class="form-control" id="funding" placeholder="Fundings" name="funding">
                                     </div>
 
 

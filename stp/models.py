@@ -1,5 +1,4 @@
 from datetime import datetime
-
 from flask import current_app
 from flask_login import UserMixin, current_user
 from flask_admin import AdminIndexView
@@ -100,10 +99,10 @@ class investors(db.Model):
 class incubators(db.Model):
      __tablename__ = "incubators"
 
-     name = db.Column(db.String(50), primary_key=True)
+     name = db.Column(db.String(50), unique=True ,primary_key=True)
      location = db.Column(db.String(50), nullable=False)
      seats = db.Column(db.Integer, nullable=False)
-     startups_incubated = db.Column(db.Integer, nullable=False)
+     startup_incubated = db.Column(db.Integer, nullable=False)
      funding = db.Column(db.Integer, nullable=False)
 
      def __repr__(self):
