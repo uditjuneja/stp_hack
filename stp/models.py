@@ -1,5 +1,4 @@
 from datetime import datetime
-
 from flask import current_app
 from flask_login import UserMixin, current_user
 from flask_admin import AdminIndexView
@@ -50,16 +49,23 @@ class posts(db.Model):
 
 
 
-# class startups(db.Model):
-#     __tablename__ = "startups"
-#
-#     id = db.Column(db.Integer, primary_key=True)
-#     name = db.Column(db.String(50), unique=True, nullable=False)
-#     image_file = db.Column(db.String(20), nullable=False, default='default.jpg')
-#     location = db.Column(db.String(20), nullable=False)
-#     description = db.Column(db.String(500))
-#     services =
-#
+class startups(db.Model):
+    __tablename__ = "startups"
+
+    name = db.Column(db.String(50), unique=True, nullable=False)
+    email= db.Column(db.String(50), unique=True, nullable=False)
+    website = db.Column(db.String(50), unique=True, nullable=False)
+    contact = db.Column(db.Number(50), unique=True, nullable=False)
+  # image_file = db.Column(db.String(20), nullable=False, default='default.jpg')
+    age= db.Column(db.Number(50), nullable=False)
+    country = db.Column(db.String(50), nullable=False)
+    address = db.Column(db.String(20), nullable=False)
+    zipCode = db.Column(db.Number(50), nullable=False)
+    description = db.Column(db.String(500))
+
+def __repr__(self):
+    return f"Post('{self.name}')"
+
 #
 # class investors(db.Model):
 #     __tablename__ = "investors"
