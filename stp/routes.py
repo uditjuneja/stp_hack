@@ -4,11 +4,7 @@ from flask_login import login_user, current_user, logout_user, login_required, \
                         logout_user
 
 from stp import app, db, bcrypt
-<<<<<<< HEAD
 from .models import users, posts
-=======
-from .models import users, startups
->>>>>>> 85b6716a5107f1d771d0e12d02043cbcf538e353
 
 @app.route("/")
 def index():
@@ -32,42 +28,36 @@ def about():
 #     return render_template("about_stp.html")
 
 
-<<<<<<< HEAD
-@app.route("/form/startup", methods=['GET', 'POST'])
-=======
 @app.route("/form/startup")
 @login_required
->>>>>>> 513148015ceea01e77631f30dc295ad88292a0df
 def form_startup():
-    if current_user.is_authenticated:
-        return redirect(url_for('dashboard'))
-
-    if request.method == 'POST':
-        if users.query.filter_by(name=request.form['name']).first():
-            flash('The name is already taken.', 'danger')
-            return redirect(url_for('startup'))
-
-        startup = startups(name=request.form['username'],
-                    email=request.form['email'],
-                    website=request.form['website'],
-                    contact=request.form['contact'],
-                    age=request.form['age'],
-                    country=request.form['country'],
-                    address=request.form['Address'],
-                    zipCode=request.form['zipcode'],
-                    description=request.form['description'])
-        db.session.add(startup)
-        db.session.commit()
-        flash('Your startup has been registered', 'success')
-        return redirect(url_for('index'))
-
     return render_template("forms/startup.html")
 
-@app.route("/form/form")
+@app.route("/form/form", methods=['GET', 'POST'])
 @login_required
 def form_post():
     if current_user.user_priority != 1:
         return url_for('index')
+
+    if request.method == 'POST':
+        title = request.form['title']
+        heading = request.form['heading']
+        content = request.form['content']
+
+        if heading == "" or content == "":
+            flash('Heading and Content are required!!', 'danger')
+            return redirect(url_for('form_post'))
+
+        post = posts(title = title,
+                    heading=heading,
+                    content=content,
+
+
+        )
+        flash('Heading and Content are required!!', 'danger')
+        return redirect(url_for('index'))
+
+
     return render_template("forms/post.html")
 
 @app.route("/contact")

@@ -1,0 +1,37 @@
+{% extends "template.html" %}
+{% block content %}
+<div class="shop_sidebar_area">
+
+    <!-- ##### Single Widget ##### -->
+    <div class="widget catagory mb-50">
+
+        <a href="#"><h6 class="widget-title mb-30" {% if url_for(request.endpoint) == "/about"%}style="color:blue;" {%endif%}>Starup Punjab</h6></a>
+        <a href="#"><h6 class="widget-title mb-30">CM's Message</h6></a>
+
+        <h6 class="widget-title mb-30">Startup Portal</h6>
+        <div class="catagories-menu">
+            <ul>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Free Resources</a></li>
+                <li><a href="#">Explore community</a></li>
+            </ul>
+        </div>
+
+        <!-- Widget Title -->
+        <h6 class="widget-title mb-30">FAQs</h6>
+        <!--  Catagories  -->
+        <div class="catagories-menu">
+            <ul>
+                <li class="Active"><a href="#">General</a></li>
+                <li><a href="#">For Startups</a></li>
+                <li><a href="#">For Mentors</a></li>
+                <li><a href="#">other FAQs</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+{% block about %}{% endblock %}
+
+
+{% endblock content %}
