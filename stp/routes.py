@@ -4,11 +4,12 @@ from flask_login import login_user, current_user, logout_user, login_required, \
                         logout_user
 
 from stp import app, db, bcrypt
-from .models import users
+from .models import users, posts, startups
 
 @app.route("/")
 def index():
-    return render_template("index.html")
+    posts_all = posts.query.all()
+    return render_template("index.html", posts=posts_all)
 
 @app.route("/about")
 def about():
@@ -32,10 +33,94 @@ def about_cm():
 #     return render_template("about_stp.html")
 
 
+<<<<<<< HEAD
 @app.route("/form/startup")
+@login_required
 def form_startup():
     return render_template("forms/startup.html")
 
+@app.route("/form/form", methods=['GET', 'POST'])
+=======
+@app.route("/form/startup", methods=['GET', 'POST'])
+@login_required
+def form_startup():
+    if not current_user.is_authenticated:
+        return redirect(url_for('index'))
+
+    if request.method == 'POST':
+        print ("In post", request.form['company'])
+        print ()
+        print ()
+        print ()
+        print ()
+
+        if users.query.filter_by(name=request.form['company']).first():
+            flash('The name is already taken.', 'danger')
+            return redirect(url_for('startup'))
+
+        startup = startups(name=request.form['username'],
+                    email=request.form['email'],
+                    website=request.form['website'],
+                    contact=request.form['contact'],
+                    age=request.form['age'],
+                    country=request.form['country'],
+                    address=request.form['Address'],
+                    zipCode=request.form['zipcode'],
+                    description=request.form['description'])
+        db.session.add(startup)
+        db.session.commit()
+        flash('Your startup has been registered', 'success')
+        return redirect(url_for('index'))
+
+    return render_template("forms/startup.html")
+
+
+@app.route("/form/investor", methods=['GET', 'POST'])
+@login_required
+def form_investor():
+    if not current_user.is_authenticated:
+        return redirect(url_for('index'))
+
+    if request.method == 'POST':
+
+        investor = investors(name=request.form['name'],
+                    city=request.form['city'],
+                    investment=request.form['investment'],
+                    desc=request.form['desc'])
+
+        db.session.add(investor)
+        db.session.commit()
+        return redirect(url_for('index'))
+        return render_template("forms/investor.html")
+
+
+@app.route("/form/form")
+>>>>>>> 0983959db048e9a9f5c195e198f619e43354cc4f
+@login_required
+def form_post():
+    if current_user.user_priority != 1:
+        return url_for('index')
+
+    if request.method == 'POST':
+        title = request.form['title']
+        heading = request.form['heading']
+        content = request.form['content']
+
+        if heading == "" or content == "":
+            flash('Heading and Content are required!!', 'danger')
+            return redirect(url_for('form_post'))
+
+        post = posts(title = title,
+                    heading=heading,
+                    content=content,
+
+
+        )
+        flash('Heading and Content are required!!', 'danger')
+        return redirect(url_for('index'))
+
+
+    return render_template("forms/post.html")
 
 @app.route("/contact")
 def contact():

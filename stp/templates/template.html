@@ -70,7 +70,7 @@
             <nav class="amado-nav">
                 <ul>
                     <li {%if url_for(request.endpoint) == "/"%} class="active" {%else%} {%endif%} ><a href="{{url_for('index')}}">Home</a></li>
-                    <li {%if url_for(request.endpoint) == "/about"%} class="active" {%else%} {%endif%}><a href="{{ url_for('about') }}">About</a></li>
+                    <li {%if "/about" in url_for(request.endpoint) == "/about"%} class="active" {%else%} {%endif%}><a href="{{ url_for('about') }}">About</a></li>
                     <li {%if url_for(request.endpoint) == "/explore"%} class="active" {%else%} {%endif%} ><a href="{{ url_for('contact') }}">Explore</a></li>
                     <li {%if url_for(request.endpoint) == "/events"%} class="active" {%else%} {%endif%} ><a href="{{ url_for('contact') }}">Events</a></li>
                     <li {%if url_for(request.endpoint) == "/contact"%} class="active" {%else%} {%endif%} ><a href="{{ url_for('contact') }}">Contact</a></li>
