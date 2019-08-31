@@ -85,7 +85,8 @@ def form_startup():
                     country=request.form['country'],
                     address=request.form['Address'],
                     zipCode=request.form['zipcode'],
-                    description=request.form['description'])
+                    description=request.form['description'],
+                    image_file=f.filename)
         db.session.add(startup)
         db.session.commit()
         flash('Your startup has been registered', 'success')
