@@ -96,15 +96,18 @@ class investors(db.Model):
 
     def __repr__(self):
         return f"Post('{self.name}')"
-#
-# class incubators(db.Model):
-#     __tablename__ = "incubators"
-#     id = db.Column(db.Integer, primary_key=True)
-#     name = db.Column(db.String(50), unique=True, nullable=False)
-#     location = db.Column(db.String(20), nullable=False)
-#
-#
-#
+
+class incubators(db.Model):
+     __tablename__ = "incubators"
+
+     name = db.Column(db.String(50), primary_key=True)
+     location = db.Column(db.String(50), nullable=False)
+     seats = db.Column(db.Integer, nullable=False)
+     startups_incubated = db.Column(db.Integer, nullable=False)
+     funding = db.Column(db.Integer, nullable=False)
+
+     def __repr__(self):
+         return f"Post('{self.name}')"
 # class user(db.Model):
 #     __tablename__ = "user"
 #     id = db.Column(db.Integer, primary_key=True)

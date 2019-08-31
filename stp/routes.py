@@ -4,7 +4,7 @@ from flask_login import login_user, current_user, logout_user, login_required, \
                         logout_user
 
 from stp import app, db, bcrypt
-from .models import users, posts, startups
+from .models import users, posts, startups , investors , incubators
 
 @app.route("/")
 def index():
@@ -82,8 +82,26 @@ def form_investor():
         db.session.add(investor)
         db.session.commit()
         return redirect(url_for('index'))
-        return render_template("forms/investor.html")
+    return render_template("forms/investor.html")
 
+@app.route("/form/incubator", methods=['GET', 'POST'])
+@login_required
+def form_incubator():
+    if not current_user.is_authenticated:
+        return redirect(url_for('index'))
+
+    if request.method == 'POST':
+
+        incubator = incubators(name=request.form['name'],
+                    location=request.form['location'],
+                    seats=request.form['seats'],
+                    startups_incubated=request.form['startups_incubated'],
+                    funding=request.form['funding'])
+
+        db.session.add(incubator)
+        db.session.commit()
+        return redirect(url_for('index'))
+    return render_template("forms/incubator.html")
 
 @app.route("/form/form")
 @login_required
