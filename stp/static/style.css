@@ -14,8 +14,8 @@
 .amrinder{
   display:inline;
   float:left;
-  width=200px;
-  height=400px;
+  width=50%;
+  height=600px;
 
 }
 
@@ -23,4 +23,8 @@
   display:inline;
   /* margin-left: 50px; */
 padding-left: 50px;
+}
+.cm{
+  background: #DCDCDC;
+  border-radius: 2%
 }
