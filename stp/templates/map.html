@@ -1,12 +1,16 @@
+{% extends "template.html" %}
+{% block content %}
 
-<!DOCTYPE html>
-<meta charset="utf-8">
+        <!-- Product Catagories Area Start -->
 
-<body>
-    <script src="http://d3js.org/d3.v3.min.js"></script>
+        <div class="products-catagories-area clearfix">
+
+
+            <div class="single-product-area section-padding-100 clearfix">
+            <div class="container-fluid">    <script src="http://d3js.org/d3.v3.min.js"></script>
     <script src="http://d3js.org/topojson.v1.min.js"></script>
     <script src="https://rawgit.com/Anujarya300/bubble_maps/master/data/geography-data/datamaps.none.js"></script>
-    <div id="india" style="height: 600px; width: 900px;"></div>
+    <center><div id="india" style="height: 800px; width: 1200px;"></div>
     <script>
         var bubble_map = new Datamap({
             element: document.getElementById('india'),
@@ -107,11 +111,16 @@
         setTimeout(() => { // only start drawing bubbles on the map when map has rendered completely.
             bubble_map.bubbles(bubbles, {
                 popupTemplate: function (geo, data) {
-                    return `<div class="hoverinfo">city: ${data.state}, Slums: ${data.radius}%</div>`;
+                    return `<div class="hoverinfo">city: ${data.state}, Intreast: ${data.radius}%</div>`;
                 }
             });
         }, 1000);
     </script>
-</body>
+</div></center>
+</div>
+</div>
+</div>
 
-</html>
+<!-- Product Catagories Area End -->
+
+{% endblock content %}

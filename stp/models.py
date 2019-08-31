@@ -72,7 +72,7 @@ class investors(db.Model):
     desc = db.Column(db.String(20), nullable=False)
 
     def __repr__(self):
-        return f"Post('{self.name}')"
+        return f"investor('{self.name}', '{self.desc}')"
 
 class incubators(db.Model):
      __tablename__ = "incubators"
