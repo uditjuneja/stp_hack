@@ -4,11 +4,12 @@ from flask_login import login_user, current_user, logout_user, login_required, \
                         logout_user
 
 from stp import app, db, bcrypt
-from .models import users
+from .models import users, posts
 
 @app.route("/")
 def index():
-    return render_template("index.html")
+    posts_all = posts.query.all()
+    return render_template("index.html", posts=posts_all)
 
 @app.route("/about")
 def about():
@@ -28,9 +29,16 @@ def about():
 
 
 @app.route("/form/startup")
+@login_required
 def form_startup():
     return render_template("forms/startup.html")
 
+@app.route("/form/form")
+@login_required
+def form_post():
+    if current_user.user_priority != 1:
+        return url_for('index')
+    return render_template("forms/post.html")
 
 @app.route("/contact")
 def contact():
