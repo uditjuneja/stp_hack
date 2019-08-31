@@ -475,15 +475,15 @@ img {
         position: relative;
         z-index: 1;
         @include flex(0 0 320px);
-        width: 320px;
-        max-width: 320px;
+        width: 200x;
+        max-width: 200px;
         background-color: #fff;
-        padding: 60px 75px;
+        padding: 10px 75px;
         @media #{$breakpoint-md} {
             @include flex(0 0 280px);
-            width: 280px;
-            max-width: 280px;
-            padding: 50px;
+            width: 200px;
+            max-width: 200px;
+            padding: 10px;
         }
         @media #{$breakpoint-xs} {
             @include trans-duration(500ms);
@@ -838,7 +838,8 @@ img {
             padding: 30px 20px;
             h5 {
                 font-size: 18px;
-                margin-bottom: 0;
+                margin-bottom: 25px;
+                margin-top: 50px;
             }
             .summary-table {
                 margin-top: 30px;
