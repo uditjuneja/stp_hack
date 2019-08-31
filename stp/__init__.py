@@ -3,6 +3,7 @@ from flask_login import LoginManager
 from flask_bcrypt import Bcrypt
 from flask_sqlalchemy import SQLAlchemy
 from flask_admin import Admin
+from flask_admin.contrib.sqla import ModelView
 
 app = Flask(__name__)
 
@@ -18,10 +19,12 @@ login_manager = LoginManager(app)
 login_manager.login_view = 'login'
 login_manager.login_message_category = 'info'
 
-# from stp.models import
+from .models import users, posts
 admin = Admin(app, name='Starup Punjab >>', template_mode='bootstrap3') #, index_view=MyAdminIndexView())
-# admin.add_view(AdminView(User_Byld, db.session))
-# admin.add_view(AdminView(Device, db.session))
+admin.add_view(ModelView(users, db.session))
+admin.add_view(ModelView(posts, db.session))
+# admin.add_view(AdminView(users, db.session))
+# admin.add_view(AdminView(posts, db.session))
 # admin.add_view(AdminView(Key, db.session))
 
 from stp import routes
