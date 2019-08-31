@@ -42,7 +42,7 @@ class posts(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
 
     def __repr__(self):
-        return f"Post('{self.title}', '{self.date_posted}')"
+        return f"Post('{self.title}', '{self.heading}', '{self.content}', '{self.image_file}', '{self.date_posted}')"
 
 class startups(db.Model):
     __tablename__ = "startups"
