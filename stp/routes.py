@@ -4,11 +4,8 @@ from flask_login import login_user, current_user, logout_user, login_required, \
                         logout_user
 
 from stp import app, db, bcrypt
-<<<<<<< HEAD
 from .models import users, posts
-=======
 from .models import users, startups
->>>>>>> 85b6716a5107f1d771d0e12d02043cbcf538e353
 
 @app.route("/")
 def index():
@@ -32,18 +29,20 @@ def about():
 #     return render_template("about_stp.html")
 
 
-<<<<<<< HEAD
 @app.route("/form/startup", methods=['GET', 'POST'])
-=======
-@app.route("/form/startup")
 @login_required
->>>>>>> 513148015ceea01e77631f30dc295ad88292a0df
 def form_startup():
-    if current_user.is_authenticated:
-        return redirect(url_for('dashboard'))
+    if not current_user.is_authenticated:
+        return redirect(url_for('index'))
 
     if request.method == 'POST':
-        if users.query.filter_by(name=request.form['name']).first():
+        print ("In post", request.form['company'])
+        print ()
+        print ()
+        print ()
+        print ()
+
+        if users.query.filter_by(name=request.form['company']).first():
             flash('The name is already taken.', 'danger')
             return redirect(url_for('startup'))
 
@@ -62,6 +61,26 @@ def form_startup():
         return redirect(url_for('index'))
 
     return render_template("forms/startup.html")
+
+
+@app.route("/form/investor", methods=['GET', 'POST'])
+@login_required
+def form_investor():
+    if not current_user.is_authenticated:
+        return redirect(url_for('index'))
+
+    if request.method == 'POST':
+
+        investor = investors(name=request.form['name'],
+                    city=request.form['city'],
+                    investment=request.form['investment'],
+                    desc=request.form['desc'])
+
+        db.session.add(investor)
+        db.session.commit()
+        return redirect(url_for('index'))
+        return render_template("forms/investor.html")
+
 
 @app.route("/form/form")
 @login_required

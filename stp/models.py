@@ -64,17 +64,20 @@ class startups(db.Model):
     zipCode = db.Column(db.Integer(), nullable=False)
     description = db.Column(db.String(500))
 
-def __repr__(self):
-    return f"Post('{self.name}')"
+    def __repr__(self):
+        return f"Post('{self.name}')"
 
-#
-# class investors(db.Model):
-#     __tablename__ = "investors"
-#     id = db.Column(db.Integer, primary_key=True)
-#     name = db.Column(db.String(50), unique=True, nullable=False)
-#     location = db.Column(db.String(20), nullable=False)
-#
-#
+class investors(db.Model):
+    __tablename__ = "investors"
+
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(50),unique=True,nullable=False)
+    city = db.Column(db.String(50), nullable=False)
+    investment = db.Column(db.Integer, nullable=False)
+    desc = db.Column(db.String(20), nullable=False)
+
+    def __repr__(self):
+        return f"Post('{self.name}')"
 #
 # class incubators(db.Model):
 #     __tablename__ = "incubators"
