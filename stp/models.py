@@ -83,7 +83,7 @@ class startups(db.Model):
     description = db.Column(db.String(500))
 
     def __repr__(self):
-        return f"Post('{self.name}')"
+        return f"startup('{self.company}', '{self.email}', '{self.website}', '{self.description}')"
 
 class investors(db.Model):
     __tablename__ = "investors"

@@ -4,13 +4,16 @@ from flask_login import login_user, current_user, logout_user, login_required, \
                         logout_user
 
 from stp import app, db, bcrypt
-from .models import users, posts, startups , investors , incubators
+from .models import users, posts, startups, investors, incubators
 
 @app.route("/")
 def index():
     posts_all = posts.query.all()
     return render_template("index.html", posts=posts_all)
 
+#####################################################################
+#  About
+#####################################################################
 @app.route("/about")
 def about():
     return render_template("about/about_stp.html")
@@ -19,26 +22,38 @@ def about():
 def about_cm():
     return render_template("about/cm.html")
 
+
+#####################################################################
+#  Explore
+#####################################################################
 @app.route("/explore")
 def explore():
-    return render_template("explore/startups.html")
+    startups_all = startups.query.all()
+    return render_template("explore/startups.html", startups=startups_all )
 
+@app.route("/explore/investor")
+def explore_investor():
+    investors_all = investors.query.all()
+    return render_template("explore/investor.html", investors=investors_all)
+
+@app.route("/explore_incubator")
+def explore_incubator():
+    incubators_all = incubators.query.all()
+    return render_template("explore/incubator.html", incubators=incubators_all)
+
+@app.route("/explore_mentor")
+def explore_mentor():
+    mentors_all = mentors.query.all()
+    return render_template("explore/mentor.html", mentors=mentors_all)
+
+
+#####################################################################
+#  Events
+#####################################################################
 @app.route("/events")
 def events():
     return render_template("events/hackathons.html")
 
-
-# @app.route("/about/cm_message")
-# def about_cm():
-#     return render_template("about_cm.html")
-#
-# @app.route("/about/faq")
-# def about_faq():
-#     return render_template("about_faq.html")
-#
-# @app.route("/about")
-# def about_stp():
-#     return render_template("about_stp.html")
 
 @app.route("/form/startup", methods=['GET', 'POST'])
 @login_required
