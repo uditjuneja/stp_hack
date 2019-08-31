@@ -33,3 +33,21 @@ padding-left: 50px;
   padding: 5px;
   padding-left: 50px;
 }
+.btn{
+	text-decoration: none;
+	background: yellow;
+	color: #0E0F19;
+	padding:10px;
+	display: inline-block;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 15px;
+	font-weight: 900;
+	border-radius: 20px;
+
+
+}
+.download{
+	position:absolute;
+	bottom:0;
+	right:5px;
+}
