@@ -11,3 +11,20 @@
     /* ---------------------------------------
     ##### - PLACE YOUR CUSTOM CSS HERE - #####
     --------------------------------------- */
+.amrinder{
+  display:inline;
+  float:left;
+  width=50%;
+  height=600px;
+
+}
+
+.acon{
+  display:inline;
+  /* margin-left: 50px; */
+padding-left: 50px;
+}
+.cm{
+  background: #DCDCDC;
+  border-radius: 2%
+}
