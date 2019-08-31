@@ -4,7 +4,7 @@ from flask_login import login_user, current_user, logout_user, login_required, \
                         logout_user
 
 from stp import app, db, bcrypt
-from .models import users, posts, startups
+from .models import users, posts, startups , investors , incubators
 
 @app.route("/")
 def index():
@@ -40,24 +40,21 @@ def form_startup():
 
     if request.method == 'POST':
         print ("In post", request.form['company'])
-        print ()
-        print ()
-        print ()
-        print ()
 
-        if users.query.filter_by(name=request.form['company']).first():
+        if users.query.filter_by(company=request.form['company']).first():
             flash('The name is already taken.', 'danger')
             return redirect(url_for('startup'))
 
-        startup = startups(name=request.form['username'],
+        startup = startups(company=request.form['company'],
                     email=request.form['email'],
                     website=request.form['website'],
                     contact=request.form['contact'],
                     age=request.form['age'],
                     country=request.form['country'],
-                    address=request.form['Address'],
-                    zipCode=request.form['zipcode'],
-                    description=request.form['description'])
+                    address=request.form['address'],
+                    zipcode=request.form['zipcode'],
+                    description="Very good startup")
+
         db.session.add(startup)
         db.session.commit()
         flash('Your startup has been registered', 'success')
@@ -82,8 +79,26 @@ def form_investor():
         db.session.add(investor)
         db.session.commit()
         return redirect(url_for('index'))
-        return render_template("forms/investor.html")
+    return render_template("forms/investor.html")
 
+@app.route("/form/incubator", methods=['GET', 'POST'])
+@login_required
+def form_incubator():
+    if not current_user.is_authenticated:
+        return redirect(url_for('index'))
+
+    if request.method == 'POST':
+
+        incubator = incubators(name=request.form['name'],
+                    location=request.form['location'],
+                    seats=request.form['seats'],
+                    startups_incubated=request.form['startups_incubated'],
+                    funding=request.form['funding'])
+
+        db.session.add(incubator)
+        db.session.commit()
+        return redirect(url_for('index'))
+    return render_template("forms/incubator.html")
 
 @app.route("/form/form")
 @login_required
