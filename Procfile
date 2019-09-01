@@ -1,1 +1,1 @@
-web: gunicorn stp:run
+web: gunicorn stp:app
