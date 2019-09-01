@@ -3,6 +3,8 @@ from flask import current_app
 from flask_login import UserMixin, current_user
 from flask_admin import AdminIndexView
 from flask_admin.contrib.sqla import ModelView
+from flask_wtf.file import FileField, FileAllowed
+
 
 from stp import login_manager, db
 
@@ -17,10 +19,10 @@ class users(db.Model, UserMixin):
     username = db.Column(db.String(20), unique=True, nullable=False)
     password = db.Column(db.String(60), nullable=False)
     company = db.Column(db.String(60))
-    image_file = db.Column(db.String(20), nullable=False, default='default.jpg')
     phone_no = db.Column(db.Integer)
     email = db.Column(db.String(120), unique=True, nullable=False)
     user_priority = db.Column(db.Integer, default=2)
+    #image_file = db.Column(db.FileField(), nullable=False, default='default.jpg')
 
     # user_starups = db.relationship('starups', backref='author', lazy=True)
     # user_investors = db.relationship('', backref='author', lazy=True)
@@ -42,7 +44,7 @@ class posts(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
 
     def __repr__(self):
-        return f"Post('{self.title}', '{self.heading}', '{self.content}', '{self.image_file}', '{self.date_posted}')"
+        return f"Post('{self.title}', '{self.date_posted}')"
 
 class startups(db.Model):
     __tablename__ = "startups"
@@ -72,7 +74,7 @@ class investors(db.Model):
     desc = db.Column(db.String(20), nullable=False)
 
     def __repr__(self):
-        return f"investor('{self.name}', '{self.desc}')"
+        return f"Post('{self.name}')"
 
 class incubators(db.Model):
      __tablename__ = "incubators"

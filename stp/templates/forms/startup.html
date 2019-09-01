@@ -11,7 +11,7 @@
                                 <h2>Startup</h2>
                             </div>
 
-                            <form action="{{ url_for('form_startup') }}" method="post">
+                            <form action="{{ url_for('form_startup') }}" method="post" enctype="multipart/form-data">
                                 <div class="row">
                                   <div class="col-12 mb-3">
                                      <input type="text" class="form-control" placeholder="Company Name" name="company">
@@ -36,10 +36,13 @@
                                  </div>
 
                                  <div class="col-md-6 mb-3">
-                                     <input type="text" class="form-control" placeholder="Zip Code" name="zipCode">
+                                     <input type="text" class="form-control" placeholder="Zip Code" name="zipode">
+                                 </div>
+                                 <div class="col-md-6 mb-3">
+                                   <input type = "file" name = "file" />
                                  </div>
                                  <div class="col-12 mb-3">
-                                     <textarea name="comment" class="form-control w-100"  cols="60" rows="20" placeholder="Description"></textarea>
+                                     <textarea name="comment" class="form-control w-100"  cols="60" rows="20" placeholder="Description"id ="description" name="description"></textarea>
                                  </div>
                                  <input type="submit" class="btn amado-btn w-100"></input>
 
