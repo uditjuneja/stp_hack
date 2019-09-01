@@ -1,0 +1,20 @@
+{% extends "template.html" %}
+{% block content %}
+<div class="shop_sidebar_area">
+
+    <!-- ##### Single Widget ##### -->
+    <div class="widget catagory mb-50">
+
+        <a href="{{ url_for('about') }}"><h6 class="widget-title mb-30" {% if url_for(request.endpoint) == "/dash" %} style="color:blue;" {%endif%}>Dashboard</h6></a>
+        <!-- <a href="{{ url_for('about_cm') }}"><h6 class="widget-title mb-30" {% if url_for(request.endpoint) == "/about/cm" %} style="color:blue;" {%endif%}>Investors</h6></a>
+        <a href="{{ url_for('about_cm') }}"><h6 class="widget-title mb-30" {% if url_for(request.endpoint) == "/about/cm" %} style="color:blue;" {%endif%}>Mentors</h6></a>
+        <a href="{{ url_for('about_cm') }}"><h6 class="widget-title mb-30" {% if url_for(request.endpoint) == "/about/cm" %} style="color:blue;" {%endif%}>Incubation Centres</h6></a> -->
+        <img src="{{ url_for('static', filename='img/twitter.png') }}" alt="">
+        <h6 class="widget-title mb-30" style="color:blue;" >Logged In!</h6>
+    </div>
+</div>
+
+{% block dash %}{% endblock %}
+
+
+{% endblock content %}

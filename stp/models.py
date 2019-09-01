@@ -52,7 +52,7 @@ class startups(db.Model):
     email= db.Column(db.String(50), unique=True, nullable=False)
     website = db.Column(db.String(50), unique=True, nullable=False)
     contact = db.Column(db.Integer(), unique=True, nullable=False)
-    # image_file = db.Column(db.String(20), nullable=False, default='default.jpg')
+    image_file = db.Column(db.String(20), nullable=False, default='default.jpg')
     age= db.Column(db.Integer(), nullable=False)
     country = db.Column(db.String(50), nullable=False)
     address = db.Column(db.String(20), nullable=False)
@@ -85,3 +85,25 @@ class incubators(db.Model):
 
      def __repr__(self):
          return f"Post('{self.name}')"
+
+class analysis(db.Model):
+     __tablename__ = "analysis"
+
+     id = db.Column(db.Integer, primary_key=True)
+     total_teets = db.Column(db.Integer)
+     text_tweets = db.Column(db.Integer)
+     replies = db.Column(db.Integer)
+     retweets = db.Column(db.Integer)
+     links = db.Column(db.Integer)
+
+     a = db.Column(db.Integer)
+     b = db.Column(db.Integer)
+     c = db.Column(db.Integer)
+     d = db.Column(db.Integer)
+     e = db.Column(db.Integer)
+     f = db.Column(db.Integer)
+     g = db.Column(db.Integer)
+     h = db.Column(db.Integer)
+
+     # def __repr__(self):
+     #     return f"Post('{self.name}')"

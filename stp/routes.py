@@ -146,12 +146,22 @@ def form_post():
         return redirect(url_for('index'))
     return render_template("forms/post.html")
 
-@app.route("/contact")
-def contact():
-    return render_template("contact.html")
+
+#####################################################################
+#  Dash
+#####################################################################
+@app.route("/dash")
+def dash():
+    return render_template("dash/main.html")
+
+
 #####################################################################
 #  User
 #####################################################################
+@app.route("/contact")
+def contact():
+    return render_template("contact.html")
+
 @app.route("/login", methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:

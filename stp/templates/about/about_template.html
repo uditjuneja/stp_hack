@@ -12,7 +12,7 @@
             <ul>
 
                 <li><a href="#">Free Resources</a></li>
-                <li><a href="#">Explore community</a></li>
+                <li {% if url_for(request.endpoint) == "/about/cm" %} style="color:blue;" {%endif%}><a href="{{ url_for('response_map') }}">Explore community</a></li>
             </ul>
         </div>
 

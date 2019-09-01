@@ -19,12 +19,14 @@ login_manager = LoginManager(app)
 login_manager.login_view = 'login'
 login_manager.login_message_category = 'info'
 
-from .models import users, posts, startups, incubators
+from .models import users, posts, startups, incubators, analysis
 admin = Admin(app, name='Starup Punjab >>', template_mode='bootstrap3') #, index_view=MyAdminIndexView())
 admin.add_view(ModelView(users, db.session))
 admin.add_view(ModelView(posts, db.session))
 admin.add_view(ModelView(startups, db.session))
 admin.add_view(ModelView(incubators, db.session))
+admin.add_view(ModelView(analysis, db.session))
+
 
 # admin.add_view(AdminView(users, db.session))
 # admin.add_view(AdminView(posts, db.session))
