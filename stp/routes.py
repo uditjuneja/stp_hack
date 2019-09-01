@@ -68,24 +68,24 @@ def form_startup():
         return redirect(url_for('index'))
 
     if request.method == 'POST':
-        f = request.files['file']
-        f.save(secure_filename(f.filename))
-        return 'file uploaded successfully'
+        f = request.form
+        for key in f.keys():
+            for value in f.getlist(key):
+                print (key,":",value)
+        #
+        # if startups.query.filter_by(company=request.form['company']).first():
+        #     flash('The name is already taken.', 'danger')
+        #     return redirect(url_for('startup'))
 
-        if startups.query.filter_by(company=request.form['company']).first():
-            flash('The name is already taken.', 'danger')
-            return redirect(url_for('startup'))
-
-        startup = startups(name=request.form['username'],
+        startup = startups(company=request.form['company'],
                     email=request.form['email'],
                     website=request.form['website'],
                     contact=request.form['contact'],
                     age=request.form['age'],
                     country=request.form['country'],
-                    address=request.form['Address'],
-                    zipCode=request.form['zipcode'],
-                    description=request.form['description'],
-                    image_file=f.filename)
+                    address=request.form['address'],
+                    zipcode=request.form['zipcode'],
+                    description=request.form['description'])
         db.session.add(startup)
         db.session.commit()
         flash('Your startup has been registered', 'success')

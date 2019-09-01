@@ -2,7 +2,7 @@
 {% block explore %}
         <div class="amado_product_area section-padding-100">
             <div class="container-fluid">
-                <h1 style="color:gold;"><b> Mentors </b></h1>
+                <h1 style="color:gold;"><b> Investors </b></h1>
                 <hr style="height:30px">
                 <div class="row">
                     {% for investor in investors %}
@@ -22,12 +22,12 @@
                                 <!-- Product Meta Data -->
                                 <div class="product-meta-data">
                                     <div class="line"></div>
-                                    <p class="product-price">{{ investor.company }}</p>
-                                        <h6>{{ investor.description[:50] }}</h6>
+                                    <p class="product-price">{{ investor.name }}</p>
+                                        <h6>{{ investor.desc[:50] }}</h6>
                                         <p></p>
                                         <h6><b>  Contact Info.  </b></h6>
-                                        <h6>Link - {{ investor.website }}</h6>
-                                        <h6>Email {{ investor.email }}</h6>
+                                        <h6>Investments - {{ investor.investment }}</h6>
+                                        <h6>City - {{ investor.city }}</h6>
                                 </div>
                             </div>
                         </div>

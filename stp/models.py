@@ -5,7 +5,6 @@ from flask_admin import AdminIndexView
 from flask_admin.contrib.sqla import ModelView
 from flask_wtf.file import FileField, FileAllowed
 
-
 from stp import login_manager, db
 
 @login_manager.user_loader
@@ -54,7 +53,7 @@ class startups(db.Model):
     email= db.Column(db.String(50), unique=True, nullable=False)
     website = db.Column(db.String(50), unique=True, nullable=False)
     contact = db.Column(db.Integer(), unique=True, nullable=False)
-    image_file = db.Column(db.String(20), nullable=False, default='default.jpg')
+    image_file = db.Column(db.String(20), nullable=False, default='default.png')
     age= db.Column(db.Integer(), nullable=False)
     country = db.Column(db.String(50), nullable=False)
     address = db.Column(db.String(20), nullable=False)
@@ -74,7 +73,7 @@ class investors(db.Model):
     desc = db.Column(db.String(20), nullable=False)
 
     def __repr__(self):
-        return f"Post('{self.name}')"
+        return f"Post('{self.name}', '{self.desc}', '{self.investment}', '{self.city}')"
 
 class incubators(db.Model):
      __tablename__ = "incubators"
