@@ -46,8 +46,8 @@ def explore_incubator():
 
 @app.route("/explore/mentor")
 def explore_mentor():
-    mentors_all = mentors.query.all()
-    return render_template("explore/mentors.html", mentors=mentors_all)
+    incubators_all = incubators.query.all()
+    return render_template("explore/mentors.html", mentors=incubators_all)
 
 
 #####################################################################
