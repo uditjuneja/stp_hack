@@ -81,7 +81,7 @@
             <div class="amado-btn-group mt-30 mb-100">
                 {% if current_user.is_authenticated %}
                     <a href="{{ url_for('login') }}" class="btn amado-btn mb-15" data-toggle="modal" data-target="#enabler_modal">Enabler</a>
-                    <a href="#" class="btn amado-btn active">New this week</a>
+                    <a href="{{ url_for('index') }}" class="btn amado-btn active">New this week</a>
                 {% else %}
                     <a href="{{ url_for('login') }}" class="btn amado-btn mb-15">Login</a>
                     <a href="#" class="btn amado-btn active">New this week</a>
@@ -217,7 +217,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
                                             <a class="nav-link" href="index.html">Home</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="shop.html">News</a>
+                                            <a class="nav-link" href="{{ url_for('rankings') }}">Ranikngs</a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link" href="product-details.html">Resources</a>
