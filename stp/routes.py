@@ -26,6 +26,9 @@ def about_cm():
 def response_map():
     return render_template("map.html")
 
+@app.route("/rankings")
+def rankings():
+    return render_template("ki.html")
 
 #####################################################################
 #  Explore
