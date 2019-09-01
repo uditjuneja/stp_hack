@@ -1,1 +1,1 @@
-web: gunicorn byld:app
+web: gunicorn stp:run
