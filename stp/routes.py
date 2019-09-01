@@ -4,7 +4,7 @@ from flask_login import login_user, current_user, logout_user, login_required, \
                         logout_user
 from werkzeug import secure_filename
 from stp import app, db, bcrypt
-from .models import users, posts, startups, investors, incubators
+from .models import users, posts, startups, investors, incubators, analysis
 
 @app.route("/")
 def index():
@@ -155,8 +155,28 @@ def form_post():
 #####################################################################
 @app.route("/dash")
 def dash():
-    return render_template("dash/main.html")
+    item = analysis.query.first()
+    return render_template("dash/main.html", item=item)
 
+@app.route("/dash/2")
+def dash_rank_2():
+    item = analysis.query.filter_by(id=1).first()
+    return render_template("dash/main.html", item=item)
+
+@app.route("/dash/1")
+def dash_rank_1():
+    item = analysis.query.filter_by(id=2).first()
+    return render_template("dash/main.html", item=item)
+
+@app.route("/dash/3")
+def dash_rank_3():
+    item = analysis.query.filter_by(id=3).first()
+    return render_template("dash/main.html", item=item)
+
+@app.route("/dash/4")
+def dash_rank_4():
+    item = analysis.query.filter_by(id=4).first()
+    return render_template("dash/main.html", item=item)
 
 #####################################################################
 #  User
