@@ -12,6 +12,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
 
 db = SQLAlchemy(app)
 
+# bcrypt manager
 bcrypt = Bcrypt(app)
 
 # Login Manager
